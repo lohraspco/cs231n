@@ -9,6 +9,7 @@ from past.builtins import xrange
 class LinearClassifier(object):
 
   def __init__(self):
+
     self.W = None
 
   def train(self, X, y, learning_rate=1e-3, reg=1e-5, num_iters=100,
@@ -30,7 +31,7 @@ class LinearClassifier(object):
     Outputs:
     A list containing the value of the loss function at each training iteration.
     """
-
+    print("train" ,X.shape)
     num_train, dim = X.shape
     num_classes = np.max(y) + 1 # assume y takes values 0...K-1 where K is number of classes
     if self.W is None:
@@ -54,10 +55,7 @@ class LinearClassifier(object):
       # Hint: Use np.random.choice to generate indices. Sampling with         #
       # replacement is faster than sampling without replacement.              #
       #########################################################################
-      mask = np.random.choice(num_train, batch_size , replace=True)
-      X_batch = X[mask]
-      y_batch = y[mask]
-
+      pass
       #########################################################################
       #                       END OF YOUR CODE                                #
       #########################################################################
@@ -71,8 +69,7 @@ class LinearClassifier(object):
       # TODO:                                                                 #
       # Update the weights using the gradient and the learning rate.          #
       #########################################################################
-      self.W -= learning_rate * grad
-
+      pass
       #########################################################################
       #                       END OF YOUR CODE                                #
       #########################################################################
@@ -101,17 +98,13 @@ class LinearClassifier(object):
     # TODO:                                                                   #
     # Implement this method. Store the predicted labels in y_pred.            #
     ###########################################################################
-    scores = np.dot(X, self.W)
-
-    y_pred = scores.argmax(axis=1)
-
+    pass
     ###########################################################################
     #                           END OF YOUR CODE                              #
     ###########################################################################
     return y_pred
   
   def loss(self, X_batch, y_batch, reg):
-    print("linClass loss")
     """
     Compute the loss function and its derivative. 
     Subclasses will override this.
@@ -133,6 +126,7 @@ class LinearSVM(LinearClassifier):
   """ A subclass that uses the Multiclass SVM loss function """
 
   def loss(self, X_batch, y_batch, reg):
+    print(X_batch.shape)
     return svm_loss_vectorized(self.W, X_batch, y_batch, reg)
 
 
