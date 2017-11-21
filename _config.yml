@@ -1,1 +1,11 @@
+---
+title: Cs231n
+timezone: UTC
+collections:
+  posts:
+    title: Posts
+    output: true
+  uploads:
+    title: Uploads
+    output: true
 theme: jekyll-theme-cayman
